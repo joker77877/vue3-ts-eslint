@@ -1,7 +1,6 @@
 <template>
     <h1>{{ msg }}</h1>
-    <a-button>123</a-button>
-    <a-input>123</a-input>
+    <Table size="small" :columns="columns" />
     <p>
         Recommended IDE setup:
         <a href="https://code.visualstudio.com/" target="_blank">VSCode</a>
@@ -31,8 +30,11 @@
 <script lang="ts">
 import { ref, defineComponent } from 'vue';
 
+import { Table, TableColumnsType } from 'ant-design-vue';
+
 export default defineComponent({
     name: 'HelloWorld',
+    components: { Table },
     props: {
         msg: {
             type: String,
@@ -41,7 +43,8 @@ export default defineComponent({
     },
     setup: () => {
         const count = ref(0);
-        return { count };
+        const columns: TableColumnsType<{ name: string }> = [{ title: '1', key: 'name' }];
+        return { count, columns };
     },
 });
 </script>
